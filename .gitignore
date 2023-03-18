@@ -1,5 +1,6 @@
 *.log
 *.gz
 .idea
-.pyc
+*.pyc
 .iml
+**/__pycache__
