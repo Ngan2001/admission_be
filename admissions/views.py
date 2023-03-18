@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from requests import Response
 from rest_framework import viewsets, permissions, parsers
@@ -5,6 +6,11 @@ from rest_framework.decorators import action
 
 from .models import *
 from .serializers import *
+from rest_framework import viewsets, permissions
+from rest_framework.decorators import action
+
+from .models import Admissions, AdmissionType
+from .serializers import AdmissionSerializer, AdmissionTypeSerializer, UserSerializer
 
 
 class AdmissionViewSet(viewsets.ModelViewSet):
@@ -37,7 +43,6 @@ class UserViewSet(viewsets.ModelViewSet):
             u.save()
 
         return Response(UserSerializer(u, context={'request': request}).data)
-
 
 class AdmissionTypeViewSet(viewsets.ModelViewSet):
     queryset = AdmissionType.objects.all()
@@ -78,7 +83,10 @@ class AdmissionsQuestionTimeRangeViewSet(viewsets.ModelViewSet):
     queryset = AdmissionsQuestionTimeRange.objects.all()
     serializer_class = AdmissionsQuestionTimeRangeSerializer
 
-
 class AdmissionsQuestionViewSet(viewsets.ModelViewSet):
     queryset = AdmissionsQuestion.objects.all()
     serializer_class = AdmissionsQuestionSerializer
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+

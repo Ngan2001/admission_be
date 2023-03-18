@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from rest_framework.serializers import ModelSerializer
 from .models import *
 
@@ -7,21 +8,21 @@ class AdmissionSerializer(ModelSerializer):
         model = Admissions
         fields = ['title', 'content']
 
-
 class UserRoleSerializer(ModelSerializer):
     class Meta:
         model = UserRole
         fields = ['role_name', 'created_date', 'updated_date']
 
-
-
+class AdmissionTypeSerializer(ModelSerializer):
+    class Meta:
+        model = AdmissionType
+        fields =[ 'type_name' , 'decription']
 
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['id', 'first_name', 'last_name', 'username', 'password', 'email']
         extra_kwargs = {'password': {'write_only': True}}
-
     def create(self, validated_data):
         data = validated_data.copy()
         user = User(**data)

@@ -27,7 +27,7 @@ class User(AbstractUser):
 
 
 
-class AdmissionType(ModelBase):
+class AdmissionType(models.Model):
     type_name = models.CharField(max_length=100)
     decription = models.TextField()
 
