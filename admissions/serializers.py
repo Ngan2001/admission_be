@@ -74,7 +74,7 @@ class UserSerializer(ModelSerializer):
     avatar = Base64ImageField(max_length=None, use_url=True)
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'username', 'password', 'email', 'avatar', 'address', 'birthday_date', 'phone']
+        fields = ['id', 'first_name', 'last_name', 'username', 'password', 'email', 'avatar', 'address', 'birthday_date', 'phone', 'is_superuser']
         extra_kwargs = {'password': {'write_only': True}}
     def create(self, validated_data):
         data = validated_data.copy()
