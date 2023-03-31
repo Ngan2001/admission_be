@@ -18,7 +18,7 @@ class UserRole(ModelBase):
 
 
 class User(AbstractUser):
-    birthday_date = models.DateTimeField()
+    birthday_date = models.DateTimeField(null=True)
     address = models.CharField(max_length=100)
     phone = models.CharField(max_length=11)
     avatar = models.ImageField(upload_to="users/%Y/%m/", null=True)
