@@ -4,22 +4,6 @@ from rest_framework.serializers import ModelSerializer
 from .models import *
 
 
-class AdmissionSerializer(ModelSerializer):
-    class Meta:
-        model = Admissions
-        fields = ['title', 'content']
-
-class UserRoleSerializer(ModelSerializer):
-    class Meta:
-        model = UserRole
-        fields = ['role_name', 'created_date', 'updated_date']
-
-class AdmissionTypeSerializer(ModelSerializer):
-    class Meta:
-        model = AdmissionType
-        fields =[ 'type_name' , 'decription']
-
-
 class Base64ImageField(serializers.ImageField):
     """
     A Django REST framework field for handling image-uploads through raw post data.
@@ -68,6 +52,23 @@ class Base64ImageField(serializers.ImageField):
         extension = "jpg" if extension == "jpeg" else extension
 
         return extension
+
+class AdmissionSerializer(ModelSerializer):
+    thumbnail_image = Base64ImageField(max_length=None, use_url=True)
+    class Meta:
+        model = Admissions
+        fields = ['id', 'title', 'content', 'thumbnail_image', 'admission_type']
+
+class UserRoleSerializer(ModelSerializer):
+    class Meta:
+        model = UserRole
+        fields = ['role_name', 'created_date', 'updated_date']
+
+class AdmissionTypeSerializer(ModelSerializer):
+    class Meta:
+        model = AdmissionType
+        fields =[ 'type_name' , 'decription']
+
 
 
 class UserSerializer(ModelSerializer):

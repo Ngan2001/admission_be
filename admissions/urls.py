@@ -19,8 +19,6 @@ router.register('livestreamsnotification', views.LivestreamsNotificationViewSet)
 router.register('frequentlyquestions', views.FrequentlyQuestionsViewSet),
 router.register('admissionsquestiontimeRange', views.AdmissionsQuestionTimeRangeViewSet),
 router.register('admissionsquestion', views.AdmissionsQuestionViewSet),
-router.register('admission-type', views.AdmissionTypeViewSet),
-router.register('admission', views.AdmissionViewSet),
 # router.register('user', views.UserViewSet)
 
 urlpatterns = [

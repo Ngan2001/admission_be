@@ -86,7 +86,4 @@ class AdmissionsQuestionTimeRangeViewSet(viewsets.ModelViewSet):
 class AdmissionsQuestionViewSet(viewsets.ModelViewSet):
     queryset = AdmissionsQuestion.objects.all()
     serializer_class = AdmissionsQuestionSerializer
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
 
