@@ -32,7 +32,7 @@ class AdmissionType(models.Model):
 
 
 class Admissions(ModelBase):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     content = models.TextField()
     thumbnail_image = models.ImageField(upload_to="admissions/%Y/%m/", null=True)
     admission_type = models.ForeignKey(AdmissionType, on_delete=models.CASCADE)
