@@ -18,9 +18,6 @@ class AdmissionViewSet(viewsets.ModelViewSet):
     serializer_class = AdmissionSerializer
 
 
-class UserRoleViewSet(viewsets.ModelViewSet):
-    queryset = UserRole.objects.all()
-    serializer_class = UserRoleSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):

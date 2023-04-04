@@ -10,11 +10,7 @@ class ModelBase(models.Model):
         abstract = True
         ordering = ['-id'] # sắp giảm theo id
 
-class UserRole(ModelBase):
-    role_name = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.role_name
 
 
 class User(AbstractUser):

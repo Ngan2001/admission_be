@@ -8,7 +8,6 @@ from django.contrib.staticfiles.urls import static
 
 router = routers.DefaultRouter()
 router.register('admission', views.AdmissionViewSet),
-router.register('user-role', views.UserRoleViewSet),
 router.register('user', views.UserViewSet),
 router.register('admission-type', views.AdmissionTypeViewSet),
 router.register('comment', views.CommentViewSet),

@@ -59,10 +59,7 @@ class AdmissionSerializer(ModelSerializer):
         model = Admissions
         fields = ['id', 'title', 'content', 'thumbnail_image', 'admission_type']
 
-class UserRoleSerializer(ModelSerializer):
-    class Meta:
-        model = UserRole
-        fields = ['role_name', 'created_date', 'updated_date']
+
 
 class AdmissionTypeSerializer(ModelSerializer):
     class Meta:
