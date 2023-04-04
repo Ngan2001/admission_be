@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'admissiondb',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': '123456789',
         'HOST': ''  # mặc định localhost
     }
 }

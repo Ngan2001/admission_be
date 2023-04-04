@@ -49,9 +49,7 @@ class Comment(ModelBase):
 
 class Banner(ModelBase):
     image_url = models.ImageField(upload_to="banner/%Y/%m/")
-    description = models.TextField()
-    link_url = models.TextField()
-    position = models.TextField()
+
 
 
 

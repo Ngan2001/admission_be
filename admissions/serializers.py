@@ -94,6 +94,8 @@ class CommentSerializer(ModelSerializer):
 
 
 class BannerSerializer(ModelSerializer):
+    image_url = Base64ImageField(max_length=None, use_url=True)
+
     class Meta:
         model = Banner
         fields = '__all__'
