@@ -51,15 +51,12 @@ class Banner(ModelBase):
     image_url = models.ImageField(upload_to="banner/%Y/%m/")
 
 
-
-
 class Department(ModelBase):
     image = models.ImageField(upload_to="department/%Y/%m/")
     name = models.CharField(max_length=50)
-    introduction = models.CharField(max_length=50)
     content = models.TextField()
     website = models.TextField()
-    video_url = models.TextField()
+    video_url = models.TextField(null=True)
 
     def __str__(self):
         return self.image

@@ -102,6 +102,8 @@ class BannerSerializer(ModelSerializer):
 
 
 class DepartmentSerializer(ModelSerializer):
+    image = Base64ImageField(max_length=None, use_url=True)
+
     class Meta:
         model = Department
         fields = '__all__'
