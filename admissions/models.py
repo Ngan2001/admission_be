@@ -62,6 +62,7 @@ class Department(ModelBase):
         return self.image
 
 class LivestreamsNotification(ModelBase):
+    title = models.TextField(null = True)
     content = models.TextField()
     start_date = models.DateTimeField()
     time = models.IntegerField()

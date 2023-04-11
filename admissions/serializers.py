@@ -81,6 +81,13 @@ class UserSerializer(ModelSerializer):
         user.save()
         return user
 
+    def update(self, validated_data):
+        data = validated_data.copy()
+        user = User(**data)
+        user.set_password(user.password)
+        user.save()
+        return user
+
 class AdmissionTypeSerializer(ModelSerializer):
     class Meta:
         model = AdmissionType
