@@ -39,10 +39,13 @@ class Admissions(ModelBase):
 class Comment(ModelBase):
 
     content = models.TextField()
-    feedback_comment_id = models.IntegerField()
-    origin_comment_id = models.IntegerField()
+    feedback_comment_id = models.IntegerField(null=True)
+    origin_comment_id = models.IntegerField(null=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     admissions_id = models.ForeignKey(Admissions,on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['created_date']  # sắp tăng theo ngày tạo
 
     def __str__(self):
         return self.content

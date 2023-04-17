@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from requests import Response
-from rest_framework import viewsets, permissions, parsers
+from rest_framework import viewsets, permissions, parsers, status
 from rest_framework.decorators import action
 
 from .models import *
@@ -49,6 +49,29 @@ class AdmissionTypeViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    paginate_class = None
+
+    def paginate_queryset(self, queryset):
+            return None
+
+    def get_queryset(self):
+        admissionId = self.request.query_params.get('admissionId')
+        if  admissionId is None:
+            return  Comment.objects.all()
+        else:
+            return  Comment.objects.filter(admissions_id=admissionId)
+        # return queryset
+
+
+    # @action(methods=['get'], detail=True,
+    #         name='Get comments by admission id',
+    #         url_path='get-comments-by-admission-id',
+    #         url_name='get-comments-by-admission-id')
+    # def hide_lesson(self, request, pk=None):
+    #     comment = Comment.objects.get(pk=pk)
+    #     serializer = CommentSerializer(comment)
+    #     return Response(serializer.data,
+    #                     status=status.HTTP_200_OK)
 
 
 class BannerViewSet(viewsets.ModelViewSet):

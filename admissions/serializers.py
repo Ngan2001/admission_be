@@ -95,9 +95,11 @@ class AdmissionTypeSerializer(ModelSerializer):
 
 
 class CommentSerializer(ModelSerializer):
+    username = serializers.CharField(source='user_id.username', read_only=True)
+    avatar = serializers.ImageField(source='user_id.avatar', read_only=True)
     class Meta:
         model = Comment
-        fields = '__all__'
+        fields = ('id', 'content', 'created_date', 'admissions_id', 'origin_comment_id', 'user_id', 'username', 'avatar')
 
 
 class BannerSerializer(ModelSerializer):
