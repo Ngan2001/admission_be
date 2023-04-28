@@ -11,8 +11,6 @@ class ModelBase(models.Model):
         ordering = ['-id'] # sắp giảm theo id
 
 
-
-
 class User(AbstractUser):
     birthday_date = models.DateTimeField(null=True)
     address = models.CharField(max_length=100)
@@ -98,9 +96,8 @@ class AdmissionsQuestionTimeRange(ModelBase):
         return self.is_fullday
 
 class AdmissionsQuestion(ModelBase):
-    question = models.TextField(max_length=100)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    is_answer = models.TextField()
+    question = models.TextField()
+    answer = models.TextField()
     date_answer = models.DateTimeField()
 
     def __str__(self):
