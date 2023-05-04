@@ -51,6 +51,13 @@ class Comment(ModelBase):
 class Banner(ModelBase):
     image_url = models.ImageField(upload_to="banner/%Y/%m/")
 
+class School(ModelBase):
+    logo = models.ImageField(upload_to="icon/%Y/%m/")
+    title = models.CharField(max_length=100)
+    content = models.TextField(null=True)
+
+    def __str__(self):
+        return self.content
 
 class Department(ModelBase):
     image = models.ImageField(upload_to="department/%Y/%m/")
