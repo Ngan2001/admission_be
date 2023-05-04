@@ -144,8 +144,7 @@ REST_FRAMEWORK = {
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-TIMED_AUTH_TOKEN = {
-    'DEFAULT_VALIDITY_DURATION': timedelta(days=1)
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
 }
-
 

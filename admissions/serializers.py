@@ -55,10 +55,10 @@ class Base64ImageField(serializers.ImageField):
 
 class AdmissionSerializer(ModelSerializer):
     thumbnail_image = Base64ImageField(max_length=None, use_url=True)
+    admission_type_name = serializers.CharField(source='admission_type.type_name', read_only=True)
     class Meta:
         model = Admissions
-        fields = ['id', 'title', 'content', 'thumbnail_image', 'admission_type']
-
+        fields = ['id', 'title', 'content', 'thumbnail_image', 'admission_type', 'admission_type_name']
 
 
 class AdmissionTypeSerializer(ModelSerializer):

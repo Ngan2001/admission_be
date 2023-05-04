@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from requests import Response
+# from requests import Response
+from rest_framework.response import Response
 from rest_framework import viewsets, permissions, parsers, status
 from rest_framework.decorators import action
 
@@ -11,13 +12,21 @@ from rest_framework.decorators import action
 
 from .models import Admissions, AdmissionType
 from .serializers import AdmissionSerializer, AdmissionTypeSerializer, UserSerializer
+import smtplib
 
 
 class AdmissionViewSet(viewsets.ModelViewSet):
     queryset = Admissions.objects.all()
     serializer_class = AdmissionSerializer
 
+    @action(methods=['get'], detail=False, url_path='get-all-no-paging')
+    def get_all_no_paging(self, request):
+        admissions = Admissions.objects.all()
 
+        serializer = AdmissionSerializer(admissions, many=True)
+
+        return Response(serializer.data,
+                        status=status.HTTP_200_OK)
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -40,6 +49,28 @@ class UserViewSet(viewsets.ModelViewSet):
             u.save()
 
         return Response(UserSerializer(u, context={'request': request}).data)
+
+    @action(methods=['get', 'post'], detail=False, url_path='send-mail')
+    def send_mail(self, request):
+        sender = 'from@example.com'
+        receivers = ['to@example.com']
+        message = """
+        From: From Person <from@example.com>
+        To: To Person <to@example.com>
+        Subject: SMTP email example
+
+
+        This is a test message.
+        """
+
+        try:
+            smtpObj = smtplib.SMTP('localhost')
+            smtpObj.sendmail(sender, receivers, message)
+            print("Successfully sent email")
+        except smtplib.SMTPException:
+            pass
+
+        return Response()
 
 class AdmissionTypeViewSet(viewsets.ModelViewSet):
     queryset = AdmissionType.objects.all()
