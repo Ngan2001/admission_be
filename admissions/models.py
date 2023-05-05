@@ -105,7 +105,7 @@ class AdmissionsQuestionTimeRange(ModelBase):
 class AdmissionsQuestion(ModelBase):
     question = models.TextField()
     answer = models.TextField()
-    date_answer = models.DateTimeField()
+    date_answer = models.DateTimeField(null=True)
 
     def __str__(self):
         return self.question
