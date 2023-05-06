@@ -131,10 +131,10 @@ class LivestreamsNotificationSerializer(ModelSerializer):
 
 
 class LivestreamsCommentSerializer(ModelSerializer):
+    username = serializers.CharField(source='user_id.username', read_only=True)
     class Meta:
         model = LivestreamsComment
-        fields = '__all__'
-
+        fields = ('id', 'content', 'created_date', 'livestreams_id', 'user_id', 'username')
 
 class FrequentlyQuestionsSerializer(ModelSerializer):
     class Meta:

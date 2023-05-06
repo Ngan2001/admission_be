@@ -80,7 +80,7 @@ class LivestreamsNotification(ModelBase):
 
 class LivestreamsComment(ModelBase):
     content = models.TextField()
-    livestreams_id = models.IntegerField()
+    livestreams_id = models.ForeignKey(LivestreamsNotification, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
