@@ -87,7 +87,7 @@ class LivestreamsComment(ModelBase):
         return self.content
 
 class FrequentlyQuestions(ModelBase):
-    question_content = models.CharField(max_length=100)
+    question_content = models.TextField()
     answer = models.TextField()
 
     def __str__(self):
